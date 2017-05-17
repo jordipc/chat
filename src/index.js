@@ -7,7 +7,9 @@ app.get('/', function(req, res){
 });
 
 io.on('connection', function(socket){
-  console.log('User connected');
+  // enviamos a todos los usuarios que se ha conectado un usuario nuevo
+  io.emit('chat message', '## New user connected ##');
+  
   socket.on('disconnect', function(){
     console.log('User disconnected');
   });
